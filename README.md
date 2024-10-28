@@ -14,5 +14,13 @@
   ---Example---
     $ help quit
     Quits the program
+ # Polibius
+  Encodes using a 5x5 square
+  The order input can take 1 (xy) or 0 (yx)
+  NOTE: With no order input, the function defaults to xy (instead of yx)
+
+  ---Example---
+    $ polibius Have fun with this!! -0
+    23 11 51 15  21 45 33  52 24 44 23  44 23 24 43 !!
  # Quit
    Quits the program 
