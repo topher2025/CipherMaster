@@ -2,8 +2,7 @@
  Encodes text in a variety of ciphers
 
  ## Help
-  Gives a list of all commands
-  When used with a specific comand it explains arguments for that function
+  Gives a list of all commands. When used with a specific comand it explains arguments for that function
   
   ---Example---
     
@@ -11,8 +10,7 @@
     Quits the program
 
  ## Caesar Cipher
-  Encodes using caeser cipher
-  The first argument, the shift number, is optional
+  Encodes using caeser cipher. The first argument, the shift number, is optional
   'e' for ENCODE and 'd' for DECODE is neccecary, and must be the last argument
   NOTE: With no shift input, the function will default to 3
 
@@ -22,8 +20,7 @@
     lezi jyr amxl xlmw!!
 
  ## Polibius
-  Encodes using a 5x5 square
-  The order input can take 1 (xy) or 0 (yx)
+  Encodes using a 5x5 square. The order input can take 1 (xy) or 0 (yx)
   NOTE: With no order input, the function defaults to xy (instead of yx)
 
   ---Example---
