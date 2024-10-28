@@ -2,9 +2,11 @@
  Encodes text in a variety of ciphers
  # Caesar Cipher
   Encodes using caeser cipher
+  The first argument, the shift number, is optional
+  'e' for ENCODE and 'd' for DECODE is neccecary, and must be the last argument
   NOTE: With no shift input, the function will default to 3
   ---Example---
-    $ caesar Have fun with this!! -4
+    $ caesar Have fun with this!! -4e
     lezi jyr amxl xlmw!!
  # Clear
   Clears the console

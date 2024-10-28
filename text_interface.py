@@ -1,11 +1,12 @@
 import encoder
+import simple_decoder as sd
 from os import name, system
 
 
 
 def help(input):
     if input == 'caesar':
-        print('\nCaesar Cipher\nEncodes using caeser cipher\nThe shift input can take integers from 1 to 37\nNOTE: With no shift input, the function will default to 3\n\n---Example---\n    $ caesar Have fun with this!! -4\n    lezi jyr amxl xlmw!!')
+        print("\nCaesar Cipher\nEncodes using caeser cipher\nThe shift input can take integers from 1 to 37.\nThe second argurment MUST be present, it is an 'e' for ENCODE and 'd' for DECODE. The argument always comes at the end\nNOTE: With no shift input, the function will default to 3\n\n---Example---\n    $ caesar Have fun with this!! -4e\n    lezi jyr amxl xlmw!!")
         return 1
     if input == 'clear':
         print("Clears the console.")
@@ -24,25 +25,29 @@ def help(input):
         return 1
 
 def caesar(input):
-    if input[len(input)-2] == '-':
+    if input[len(input)-3] == '-':
         try:
-            shift = int(input[len(input)-1:])
-        except:
-            print('Invalid shift argument.')
-            return 1
-        plaintext = input[0:len(input)-3]
-    elif input[len(input)-3] == '-':
-        try:
-            shift = int(input[len(input)-2:])
+            shift = int(input[len(input)-2: len(input)-1])
         except:
             print('Invalid shift argument.')
             return 1
         plaintext = input[0:len(input)-4]
+    elif input[len(input)-4] == '-':
+        try:
+            shift = int(input[len(input)-3: len(input)-1])
+        except:
+            print('Invalid shift argument.')
+            return 1
+        plaintext = input[0:len(input)-5]
     else:
         shift = 3
         plaintext = input
-    print(encoder.caesar(shift, plaintext))
-    return 1
+    if input[len(input)-1] == 'e':
+        print(encoder.caesar(shift, plaintext))
+        return 1
+    else:
+        print(sd.decode_caeser(shift, plaintext))
+        return 1
 
 def polibius(input):
     if input[len(input)-2] == '-':
@@ -66,30 +71,30 @@ def interface():
     if user_input == 'clear':
         system('cls' if name == 'nt' else 'clear')
         return 1
-    if user_input == 'help':
-        print("\nType 'help' to see this list of defined commands.\nType 'help name' to find out more about command 'name'\n\ncaesar INPUT [-SHIFT]\nclear\nhelp [COMMAND]\npolibius INPUT [-ORDER]\nquit")
+    elif user_input == 'help':
+        print("\nType 'help' to see this list of defined commands.\nType 'help name' to find out more about command 'name'\nThe 'e' or 'd' arguments are always the last argument in the command.\n\ncaesar INPUT [-SHIFT][E\D]\nclear\nhelp [COMMAND]\npolibius INPUT [-ORDER]\nquit")
         return 1
-    if user_input == 'quit':
+    elif user_input == 'quit':
         system('cls' if name == 'nt' else 'clear')
-        return 0
+        return 0   
     
-    if user_input[0:6] == 'caesar':
-        caesar(user_input[7:])
-        
-    if user_input[0:8] == 'polibius':
-        polibius(user_input[9:])
+    elif user_input[0:6] == 'caesar':
+        value = caesar(user_input[7:])
 
-    if user_input[0:5] == 'help ':
-        help(user_input[5:])
+    elif user_input[0:8] == 'polibius':
+        value = polibius(user_input[9:])
         
+    elif user_input[0:5] == 'help ':
+        value = help(user_input[5:])       
+    
     else:
         print(f"'{user_input}' is not a known command. Type 'help' for a list of all commands with arguments.")
         return 1
-
+    return value
 
 
 system('cls' if name == 'nt' else 'clear')
-print("'help' for help")
+print("Type 'help' for help")
 while True:
     if interface() == 1:
         pass

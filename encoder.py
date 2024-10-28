@@ -19,7 +19,7 @@ def caesar(shift, input):
     except Exception as e:
         return f'Failed. Reason: {e}'
     
-
+# Polibius
 def polibius(input, xy):
     '''5x5 square cipher, simple cooridinate system. Input is a interger for xy and a string for input. Retruns a string as output.'''
     try:
